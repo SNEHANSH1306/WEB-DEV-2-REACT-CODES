@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+  --bg: #0d0d0d;
+  --surface: #161616;
+  --accent: #e8ff47;
+  --accent-dim: rgba(232, 255, 71, 0.12);
+  --text: #f0f0f0;
+  --text-muted: #666;
+  --border: rgba(255, 255, 255, 0.07);
+  --nav-height: 64px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--surface);
+  height: var(--nav-height);
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(22, 22, 22, 0.92);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.3;
+}
+
+.navbar a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 80%;
+  height: 2px;
+  background: var(--accent);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+.navbar a:hover {
+  color: var(--text);
+}
+
+.navbar a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.navbar a.active {
+  color: var(--accent);
+}
+
+.navbar a.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Home link styled as brand/logo */
+.navbar a:first-child {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-right: 1.5rem;
+  padding-left: 0;
+}
+
+.navbar a:first-child::after {
+  display: none;
+}
+
+.navbar a:first-child:hover {
+  color: var(--text);
+}
+
+/* Divider dot between links */
+.navbar a:not(:first-child):not(:last-child)::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 0 1rem;
+    overflow-x: auto;
+    gap: 0;
+    scrollbar-width: none;
+  }
+
+  .navbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .navbar a:first-child {
+    margin-right: 0.75rem;
+  }
+}
