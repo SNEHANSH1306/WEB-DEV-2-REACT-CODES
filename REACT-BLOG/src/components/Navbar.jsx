@@ -4,8 +4,8 @@ import './Navbar.css'
 
 const Navbar = () => {
   return (
-    <div>
-    <Link to="/">Home</Link>
+    <div className="navbar">
+     <Link to="/" className="navbar-brand">PULSE<span>X</span></Link>
     <Link to="/bollywood">Bollywood</Link>
     <Link to="/hollywood">Hollywood</Link>
     <Link to="/technology">Technology</Link>

@@ -1,4 +1,102 @@
-a{
-    color:brown;
-    padding:10px
+/* ─── App shell ──────────────────────────────── */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+}
+
+/* ─── Main content area ──────────────────────── */
+.App-main {
+  flex: 1;
+  padding: 2.5rem 0;
+}
+
+/* ─── Page wrapper (use inside each page) ────── */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  animation: pageFadeIn 0.35s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Page hero header ───────────────────────── */
+.page-hero {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--border-dim);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 80px; height: 2px;
+  background: var(--neon);
+  box-shadow: 0 0 10px rgba(0, 245, 212, 0.6);
+}
+
+.page-hero h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-hero p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+/* ─── Content grid ───────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.grid-2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+/* ─── Footer ─────────────────────────────────── */
+.App-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-dim);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.App-footer span {
+  color: var(--neon);
+}
+
+/* ─── Category page accent colors ───────────── */
+.page-bollywood .page-hero::after  { background: var(--orange); box-shadow: 0 0 10px rgba(255,159,67,0.6); }
+.page-hollywood .page-hero::after  { background: var(--purple); box-shadow: 0 0 10px rgba(162,155,254,0.6); }
+.page-technology .page-hero::after { background: var(--neon);   }
+.page-fitness .page-hero::after    { background: var(--accent); box-shadow: 0 0 10px rgba(255,45,120,0.6); }
+.page-food .page-hero::after       { background: var(--gold);   box-shadow: 0 0 10px rgba(253,203,110,0.6); }
+
+.page-bollywood  h1 { color: var(--orange); text-shadow: 0 0 12px rgba(255,159,67,0.6); }
+.page-hollywood  h1 { color: var(--purple); text-shadow: 0 0 12px rgba(162,155,254,0.6); }
+.page-technology h1 { color: var(--neon);   text-shadow: var(--neon-glow); }
+.page-fitness    h1 { color: var(--accent); text-shadow: 0 0 12px rgba(255,45,120,0.6); }
+.page-food       h1 { color: var(--gold);   text-shadow: 0 0 12px rgba(253,203,110,0.6); }
+
+/* ─── Responsive ─────────────────────────────── */
+@media (max-width: 768px) {
+  .App-main { padding: 1.5rem 0; }
+  .page { padding: 0 1.25rem; }
+  .page-hero { padding: 2rem 0 1.5rem; }
+  .grid, .grid-2, .grid-4 { grid-template-columns: 1fr; }
 }
